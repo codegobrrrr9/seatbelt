@@ -1,0 +1,19 @@
+name: test
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - name: scanner flags the leaky fixture
+        run: |
+          if node skills/seatbelt/scripts/scan.js examples/leaky-app; then echo "expected NOT READY"; exit 1; fi
+      - name: scanner passes the safe fixture
+        run: node skills/seatbelt/scripts/scan.js examples/safe-app

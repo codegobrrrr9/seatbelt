@@ -1,0 +1,6 @@
+{
+  "name": "seatbelt",
+  "version": "0.1.0",
+  "description": "Stop your coding agent from shipping leaked keys and open databases.",
+  "contextFileName": "AGENTS.md"
+}

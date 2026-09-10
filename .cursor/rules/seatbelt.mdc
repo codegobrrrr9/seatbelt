@@ -1,0 +1,32 @@
+---
+description: seatbelt — pre-ship safety rules. Stops secrets in client code or git, tables without row security, routes without auth, open CORS, unverified webhooks.
+globs:
+alwaysApply: true
+---
+
+# seatbelt
+
+The user may not be able to read a security audit. Explain in plain English, fix things yourself.
+
+## Rules (always on)
+
+1. Secrets never touch the client or git. Keys, tokens, passwords, private keys live in env vars on the server. If one is in a source file, move it to `.env` and read it from the environment before anything else.
+2. `.env` and `.env.*` are in `.gitignore` before the first commit. Keep a `.env.example` with placeholders.
+3. Every database table gets an ownership rule. Supabase: enable RLS on every table plus owner-only policies. Firebase: rules check `request.auth`. Never `if true`.
+4. `service_role`, admin and secret keys are server-only. Only anon or publishable keys in browser code. Never behind `NEXT_PUBLIC_`, `VITE_`, `REACT_APP_`, `EXPO_PUBLIC_`.
+5. Every route that touches user data checks who is asking, then scopes the query to that user.
+6. CORS is a list of your domains, not `*`. Never `*` with credentials.
+7. Anything that costs money is rate-limited. Webhooks verify signatures before trusting the body.
+8. No `eval`, no raw HTML from user input, no debug mode in production.
+
+If a rule changes what the user asked for, say so in one line and keep going.
+
+## Pre-ship check
+
+When the user says ship, deploy, launch, publish, go live, is this safe, or /seatbelt, and after any task that added secrets, tables, routes, auth or payments:
+
+1. Run `node .cursor/seatbelt/scan.js .` (or wherever scan.js from https://github.com/codegobrrrr9/seatbelt is installed).
+2. Fix every critical and high finding. Ask before changing product behavior.
+3. Re-run, then report: verdict first (READY / NOT READY), max 5 findings, each as what + what could happen + what you did or need, then the single next step. No preamble.
+
+Never skip rules 1 or 4 silently. A leaked key cannot be un-leaked by a later commit.

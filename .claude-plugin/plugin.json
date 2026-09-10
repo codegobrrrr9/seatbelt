@@ -1,0 +1,10 @@
+{
+  "name": "seatbelt",
+  "version": "0.1.0",
+  "description": "Stop your coding agent from shipping leaked keys and open databases. Pre-ship safety skill for vibe coders.",
+  "author": { "name": "codegobrrrr9", "url": "https://github.com/codegobrrrr9" },
+  "homepage": "https://github.com/codegobrrrr9/seatbelt",
+  "repository": "https://github.com/codegobrrrr9/seatbelt",
+  "license": "MIT",
+  "keywords": ["security", "supabase", "vibe-coding", "secrets", "rls", "pre-ship", "deploy"]
+}

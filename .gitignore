@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+*.log
+# the fixture app deliberately commits a .env to be caught; real projects must not
+!examples/leaky-app/.env

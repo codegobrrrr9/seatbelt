@@ -1,0 +1,21 @@
+{
+  "name": "seatbelt",
+  "owner": { "name": "codegobrrrr9", "url": "https://github.com/codegobrrrr9" },
+  "metadata": {
+    "description": "Pre-ship safety for vibe-coded apps.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "seatbelt",
+      "source": "./",
+      "description": "Stop your coding agent from shipping leaked keys and open databases.",
+      "version": "0.1.0",
+      "author": { "name": "codegobrrrr9" },
+      "homepage": "https://github.com/codegobrrrr9/seatbelt",
+      "license": "MIT",
+      "keywords": ["security", "supabase", "vibe-coding", "secrets"],
+      "category": "security"
+    }
+  ]
+}
