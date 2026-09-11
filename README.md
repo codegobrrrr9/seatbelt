@@ -24,11 +24,14 @@ The agent installs itself. From then on it follows the rules while it writes cod
 **"ship it"** (or `/seatbelt`) it checks the project and tells you, in plain English, whether it is
 safe to deploy and what it fixed.
 
-No agent yet? Scan any project right now:
+No agent yet? Scan any project right now, nothing to install:
 
 ```bash
-npx github:codegobrrrr9/seatbelt .
+npx --yes --allow-git=all github:codegobrrrr9/seatbelt .
 ```
+
+(npm 12 blocks git-sourced packages by default, hence the flag. On older npm, plain
+`npx github:codegobrrrr9/seatbelt .` works.)
 
 ## Why
 
