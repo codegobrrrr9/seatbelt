@@ -4,8 +4,8 @@ A small Next.js + Supabase app the way a coding agent often ships it on the firs
 issue below is deliberate. Do not deploy this. `examples/safe-app` is the same app with every
 finding fixed.
 
-The fake keys are shaped to match seatbelt's checks but not GitHub's push protection, so the
-fixture can live in a public repo. AWS, Google, GitHub and Slack key checks are covered by unit
+The fake keys are shaped to match seatbelt's checks but not GitHub's push protection, and this directory is
+excluded from GitHub secret scanning in `.github/secret_scanning.yml`, so forks do not get alert emails. AWS, Google, GitHub and Slack key checks are covered by unit
 tests with temp files instead.
 
 | # | Check | File | What is wrong |

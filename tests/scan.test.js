@@ -92,19 +92,19 @@ function tmpProject(files) {
 function ids(dir) { const r = scan(dir); rmSync(dir, { recursive: true, force: true }); return r.findings.map(f => f.id); }
 
 test('S03 AWS access key', () => {
-  assert.ok(ids(tmpProject({ 'src/s3.js': "const key = 'AKIAJQ7ZXK5T2M9PLW3B';" })).includes('S03'));
+  assert.ok(ids(tmpProject({ 'src/s3.js': `const key = '${'AKIA' + 'JQ7ZXK5T2M9PLW3B'}';` })).includes('S03'));
 });
 test('S04 Google API key', () => {
-  assert.ok(ids(tmpProject({ 'src/maps.js': "const k = 'AIzaSyA1234567890abcdefghijklmnopqrstuv';" })).includes('S04'));
+  assert.ok(ids(tmpProject({ 'src/maps.js': `const k = '${'AIza' + 'SyA1234567890abcdefghijklmnopqrstuv'}';` })).includes('S04'));
 });
 test('S05 GitHub token', () => {
-  assert.ok(ids(tmpProject({ 'src/gh.js': "const t = 'ghp_abcdefghijklmnopqrstuvwxyz0123456789';" })).includes('S05'));
+  assert.ok(ids(tmpProject({ 'src/gh.js': `const t = '${'ghp_' + 'abcdefghijklmnopqrstuvwxyz0123456789'}';` })).includes('S05'));
 });
 test('S06 Slack token', () => {
-  assert.ok(ids(tmpProject({ 'src/slack.js': "const t = 'xoxb-1234567890-abcdefghij';" })).includes('S06'));
+  assert.ok(ids(tmpProject({ 'src/slack.js': `const t = '${'xoxb-' + '1234567890-abcdefghij'}';` })).includes('S06'));
 });
 test('S07 new-style Supabase secret key', () => {
-  assert.ok(ids(tmpProject({ 'src/x.js': "const k = 'sb_secret_abcdefghijklmnop123';" })).includes('S07'));
+  assert.ok(ids(tmpProject({ 'src/x.js': `const k = '${'sb_secret_' + 'abcdefghijklmnop123'}';` })).includes('S07'));
 });
 
 // ---- Things that must NOT fire
