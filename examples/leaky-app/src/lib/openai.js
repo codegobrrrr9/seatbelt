@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 
-export const openai = new OpenAI({ apiKey: 'sk-proj-fixturekeyABCDEFGHIJKLMNOPQRSTUVWXYZ0123' });
+export const openai = new OpenAI({ apiKey: 'sk-proj-TbHdpWocrY5UtpT12vTPKHGAY7VNEmiGpyobAsoJAqEjgkJG' });
 
 export async function summarize(text) {
   const r = await openai.chat.completions.create({

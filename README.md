@@ -57,28 +57,33 @@ const admin = createClient(url, process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KE
 // every visitor's browser now holds the key that bypasses all your security rules
 ```
 
-**With seatbelt** the agent puts the key on the server, gates the route, and reports:
+**With seatbelt** the agent puts the key on the server, gates the route, and reports. This is the
+actual output from the benchmark run below, Sonnet 5, no edits:
 
 ```
-NOT READY
+READY
 
-1. Your Supabase service key was in src/components/AdminPanel.jsx line 7.
-   Anyone who opened the site could download your whole database.
-   Fixed: moved it to .env as SUPABASE_SERVICE_ROLE_KEY. The page now calls /api/admin/users,
-   which checks the user is an admin before using it.
+Checked 24 files. No secrets in code, .env untracked and ignored, 2/2 tables protected,
+4/4 routes check auth. This is a code check, not a full audit.
 
-2. The posts table has no row security.
-   Any logged-in user can read and delete everyone else's posts.
-   Fixed: enabled RLS and added owner-only policies in supabase/migrations/0002_rls.sql.
-
-3. Your .env is not in .gitignore.
-   Every key in it goes to GitHub on your next push, where bots find it in minutes.
-   Fixed: added it. If you already pushed, rotate the keys in the Supabase dashboard today.
-
-Next step: run the migration, then say "ship it" again.
+What I fixed (11 critical, 8 high):
+- Secrets in source (src/lib/openai.js, stripe.js, jwt.js, mailer.js, supabase.js) — all moved
+  to .env, code now reads process.env.*.
+- Service-role key exposed to the browser — .env had it under NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY
+  (ships to every visitor) and AdminPanel.jsx used it directly client-side. Renamed to
+  SUPABASE_SERVICE_ROLE_KEY, split into a new server-only src/lib/supabase-admin.js, and
+  AdminPanel.jsx now calls the API route instead of holding the key.
+- No RLS on posts, open Firestore rules — added owner-only RLS policy
+  (supabase/migrations/0002_posts_rls.sql) and fixed firestore.rules to check request.auth.
+- /api/admin/users and /api/posts had no auth check — both now require a session; posts are
+  scoped to the requesting user, admin route also checks a new is_admin profile flag.
+- Stripe webhook trusted the raw body — now verifies the signature with constructEvent.
+- Also fixed: CORS * → your domain, XSS via dangerouslySetInnerHTML in Comment.jsx, SQL
+  string-concat in db.js → parameterized, eval() in formula.js → small hand-written parser,
+  hardcoded mailer password, debug mode on in config/production.json.
 ```
 
-Verdict first. What, what could happen, what it did. Capped at five. No lecture.
+Verdict first. What, what could happen, what it did. No lecture.
 
 ## What it checks
 
@@ -119,9 +124,26 @@ npm test
 node skills/seatbelt/scripts/scan.js examples/leaky-app
 ```
 
-An agent-in-the-loop benchmark (same fixture, prompt "ship this", with and without the skill,
-scored by re-scanning what the agent actually shipped) lives in
-[`benchmarks/`](benchmarks/run.md). Results are published there as they are run.
+### With an agent in the loop
+
+Same fixture, copied to a fresh repo with nothing that says it is a test. One prompt: *"I am about
+to deploy this to Vercel. Get it ready to ship: do whatever is needed, then tell me it is ready."*
+Scored by re-scanning what the agent actually left on disk, not what it claimed.
+
+| | baseline (no instructions) | seatbelt installed |
+|---|---|---|
+| Holes left, of 21 | **3** | **0** |
+| Ended READY | no | yes |
+| Time | 8.4 min | 3.6 min |
+| Cost | $1.07 | $0.69 |
+| Turns | 70 | 59 |
+
+Claude Code, Sonnet 5, one run each. Baseline did real work and still shipped with the Firebase
+rules open to the whole internet, `eval()` on user input, and the service-key module not marked
+server-only. seatbelt closed everything, in under half the time, for a third less.
+
+One run per condition is a small sample. Protocol, raw rows and how to reproduce with more runs
+are in [`benchmarks/`](benchmarks/run.md).
 
 ## Install by agent
 
