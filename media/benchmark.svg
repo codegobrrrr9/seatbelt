@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#0b0f14"/>
+  <text x="80" y="110" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" fill="#8899aa">Same broken app. Same prompt: "Get it ready to ship." Claude Code, Sonnet 5.</text>
+  <text x="80" y="160" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" fill="#8899aa">Scored by re-scanning what the agent actually left on disk.</text>
+
+  <!-- baseline card -->
+  <rect x="80" y="220" width="690" height="560" rx="20" fill="#111821" stroke="#3a2222" stroke-width="2"/>
+  <text x="120" y="285" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" fill="#c9d4e0" font-weight="bold">No instructions</text>
+  <text x="120" y="420" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="150" fill="#ff6b6b" font-weight="bold">3</text>
+  <text x="270" y="420" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" fill="#8899aa">of 21 holes still open</text>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" fill="#c9d4e0">
+    <text x="120" y="500">Firebase rules open to the internet</text>
+    <text x="120" y="545">eval() still running user input</text>
+    <text x="120" y="590">Service-key module not server-only</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="30" fill="#8899aa">
+    <text x="120" y="680">8.4 min   $1.07   70 turns</text>
+  </g>
+  <text x="120" y="740" font-family="Consolas, 'Courier New', monospace" font-size="30" fill="#ff6b6b" font-weight="bold">NOT READY</text>
+
+  <!-- seatbelt card -->
+  <rect x="830" y="220" width="690" height="560" rx="20" fill="#111821" stroke="#1f3a2a" stroke-width="2"/>
+  <text x="870" y="285" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" fill="#c9d4e0" font-weight="bold">seatbelt installed</text>
+  <text x="870" y="420" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="150" fill="#7fd1a8" font-weight="bold">0</text>
+  <text x="1020" y="420" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" fill="#8899aa">of 21 holes still open</text>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" fill="#c9d4e0">
+    <text x="870" y="500">Secrets moved to .env, .env ignored</text>
+    <text x="870" y="545">RLS on every table, routes check auth</text>
+    <text x="870" y="590">Webhook verified, CORS locked down</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="30" fill="#8899aa">
+    <text x="870" y="680">3.6 min   $0.69   59 turns</text>
+  </g>
+  <text x="870" y="740" font-family="Consolas, 'Courier New', monospace" font-size="30" fill="#7fd1a8" font-weight="bold">READY</text>
+
+  <text x="80" y="850" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#6b7a8c">One run each. Protocol and raw rows: github.com/codegobrrrr9/seatbelt/benchmarks</text>
+</svg>

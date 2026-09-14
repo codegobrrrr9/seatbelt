@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#0b0f14"/>
+  <rect x="60" y="50" width="1480" height="800" rx="18" fill="#111821" stroke="#1f2a37" stroke-width="2"/>
+  <circle cx="98" cy="88" r="9" fill="#ff5f57"/><circle cx="126" cy="88" r="9" fill="#febc2e"/><circle cx="154" cy="88" r="9" fill="#28c840"/>
+  <text x="800" y="94" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="20" fill="#6b7a8c">notes-app  ·  seatbelt</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#c9d4e0">
+    <text x="110" y="160"><tspan fill="#7fd1a8">$</tspan> npx --yes --allow-git=all github:codegobrrrr9/seatbelt .</text>
+    <text x="110" y="210" fill="#8899aa">seatbelt  scanned 20 files in 41ms</text>
+    <text x="110" y="270" fill="#ff6b6b" font-weight="bold">CRITICAL (11)</text>
+    <text x="140" y="312"><tspan fill="#ff9f43">S07</tspan>  src/lib/supabase.js:8</text>
+    <text x="200" y="346" fill="#8899aa">Supabase service_role key in code. Anyone who gets it can download and delete your database.</text>
+    <text x="140" y="392"><tspan fill="#ff9f43">D01</tspan>  src/components/AdminPanel.jsx:7</text>
+    <text x="200" y="426" fill="#8899aa">Service key used in client-side code. The browser bundle ships the key that bypasses RLS.</text>
+    <text x="140" y="472"><tspan fill="#ff9f43">D03</tspan>  supabase/migrations/0001_init.sql:9</text>
+    <text x="200" y="506" fill="#8899aa">Table without row level security. Any logged-in user can read and delete every row.</text>
+    <text x="140" y="552"><tspan fill="#ff9f43">R01</tspan>  .env:1</text>
+    <text x="200" y="586" fill="#8899aa">.env is not ignored by git. Bots scan GitHub for keys within minutes of a push.</text>
+    <text x="140" y="632" fill="#6b7a8c">... 7 more critical, then HIGH (8), MEDIUM (2)</text>
+    <text x="110" y="700" fill="#ffd166" font-weight="bold">HIGH (8)</text>
+    <text x="140" y="742"><tspan fill="#ff9f43">W05</tspan>  src/app/api/stripe/webhook/route.js:1   <tspan fill="#8899aa">Stripe webhook does not verify the signature.</tspan></text>
+    <text x="140" y="782"><tspan fill="#ff9f43">W02</tspan>  src/app/api/admin/users/route.js:1      <tspan fill="#8899aa">API route with no auth check.</tspan></text>
+  </g>
+  <rect x="60" y="806" width="1480" height="44" rx="0" fill="#1a1010"/>
+  <text x="110" y="836" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#ff6b6b" font-weight="bold">NOT READY  11 critical, 8 high, 2 medium.  1/2 tables protected, 2/4 routes check auth.</text>
+</svg>

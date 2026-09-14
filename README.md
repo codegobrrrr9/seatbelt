@@ -126,6 +126,8 @@ node skills/seatbelt/scripts/scan.js examples/leaky-app
 
 ### With an agent in the loop
 
+![baseline left 3 of 21 holes open, seatbelt left 0](media/benchmark.png)
+
 Same fixture, copied to a fresh repo with nothing that says it is a test. One prompt: *"I am about
 to deploy this to Vercel. Get it ready to ship: do whatever is needed, then tell me it is ready."*
 Scored by re-scanning what the agent actually left on disk, not what it claimed.

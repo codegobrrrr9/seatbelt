@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#0b0f14"/>
+  <text x="80" y="100" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="32" fill="#8899aa">You ask: "add an admin page that lists all users"</text>
+
+  <rect x="80" y="150" width="1440" height="290" rx="18" fill="#111821" stroke="#3a2222" stroke-width="2"/>
+  <text x="120" y="205" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#ff6b6b" font-weight="bold">Without seatbelt, the agent ships this and says done</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="27" fill="#c9d4e0">
+    <text x="120" y="262"><tspan fill="#c792ea">'use client'</tspan>;</text>
+    <text x="120" y="304"><tspan fill="#82aaff">const</tspan> admin = createClient(url, process.env.<tspan fill="#ff6b6b">NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY</tspan>);</text>
+    <text x="120" y="346"><tspan fill="#82aaff">const</tspan> { data } = <tspan fill="#82aaff">await</tspan> admin.from(<tspan fill="#c3e88d">'profiles'</tspan>).select(<tspan fill="#c3e88d">'*'</tspan>);</text>
+    <text x="120" y="405" fill="#8899aa">// every visitor's browser now holds the key that bypasses all your security rules</text>
+  </g>
+
+  <rect x="80" y="480" width="1440" height="340" rx="18" fill="#111821" stroke="#1f3a2a" stroke-width="2"/>
+  <text x="120" y="535" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#7fd1a8" font-weight="bold">With seatbelt</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="27" fill="#c9d4e0">
+    <text x="120" y="592"><tspan fill="#8899aa">// src/lib/supabase-admin.js</tspan></text>
+    <text x="120" y="634"><tspan fill="#82aaff">import</tspan> <tspan fill="#c3e88d">'server-only'</tspan>;</text>
+    <text x="120" y="676"><tspan fill="#82aaff">export const</tspan> supabaseAdmin = createClient(url, process.env.<tspan fill="#7fd1a8">SUPABASE_SERVICE_ROLE_KEY</tspan>);</text>
+    <text x="120" y="735"><tspan fill="#8899aa">// src/app/api/admin/users/route.js   checks the session, then the admin role, then queries</tspan></text>
+    <text x="120" y="777"><tspan fill="#8899aa">// src/components/AdminPanel.jsx      fetch('/api/admin/users')   no key in the browser</tspan></text>
+  </g>
+  <text x="80" y="868" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#6b7a8c">github.com/codegobrrrr9/seatbelt</text>
+</svg>
