@@ -11,8 +11,8 @@ Run the seatbelt pre-ship check on this project.
    auth to a route that may be intentionally public. `${CLAUDE_PLUGIN_ROOT}/skills/seatbelt/references/checks.md`
    has the fix for every check id.
 3. Re-run the scanner.
-4. Report using the format in the seatbelt skill: verdict first (READY or NOT READY), at most 5
-   findings, each as one line of what, one sentence of what could happen, one line of what you did
+4. Report using the format in the seatbelt skill: verdict first (READY or NOT READY), then findings in
+   severity order with the rest behind "and N more, ask to see them", each as one line of what, one sentence of what could happen, one line of what you did
    or need. End with the single next step. No preamble.
 
 $ARGUMENTS

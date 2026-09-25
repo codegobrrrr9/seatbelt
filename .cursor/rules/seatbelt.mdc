@@ -27,6 +27,6 @@ When the user says ship, deploy, launch, publish, go live, is this safe, or /sea
 
 1. Run `node .cursor/seatbelt/scan.js .` (or wherever scan.js from https://github.com/codegobrrrr9/seatbelt is installed).
 2. Fix every critical and high finding. Ask before changing product behavior.
-3. Re-run, then report: verdict first (READY / NOT READY), max 5 findings, each as what + what could happen + what you did or need, then the single next step. No preamble.
+3. Re-run, then report: verdict first (READY / NOT READY), findings in severity order with the rest behind "and N more", each as what + what could happen + what you did or need, then the single next step. No preamble.
 
 Never skip rules 1 or 4 silently. A leaked key cannot be un-leaked by a later commit.

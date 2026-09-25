@@ -60,8 +60,9 @@ and before you finish any task that added secrets, tables, routes, auth, or paym
 
 ## Report format
 
-Lead with the verdict. Cap at 5 findings; say "and N more, ask to see them" for overflow. One line
-per finding, one sentence on what could happen, one line on what you did or will do. No preamble,
+Lead with the verdict, then findings in severity order. Show the ones the user has to act on now and
+put the rest behind "and N more, ask to see them", so the report stays readable for someone who
+cannot read a security audit. One line per finding, one sentence on what could happen, one line on what you did or will do. No preamble,
 no lecture, no praise.
 
 ```

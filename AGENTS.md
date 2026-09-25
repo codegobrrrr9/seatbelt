@@ -55,7 +55,7 @@ finishing any task that added secrets, tables, routes, auth or payments:
 2. Fix every critical and high finding yourself. Ask before changing product behavior, such as
    adding auth to a route that was meant to be public. `skills/seatbelt/references/checks.md`
    has the fix for every check id.
-3. Re-run, then report in this shape, capped at 5 findings, no preamble:
+3. Re-run, then report in this shape, findings in severity order with the rest behind "and N more, ask to see them", no preamble:
 
 ```
 NOT READY

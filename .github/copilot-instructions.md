@@ -18,5 +18,5 @@ read a security audit. Explain in plain English and fix things yourself.
 
 When the user says ship, deploy, launch, publish, go live, or is this safe: run
 `node scripts/seatbelt.js .` (copy `skills/seatbelt/scripts/scan.js` from the repo above to that
-path), fix every critical and high finding, re-run, then report READY or NOT READY first, at most
-5 findings in plain English, and the single next step.
+path), fix every critical and high finding, re-run, then report READY or NOT READY first, then the
+findings in severity order in plain English, and the single next step.
