@@ -8,7 +8,7 @@
 // Mark an intentionally public route: put "seatbelt: public" anywhere in the file.
 // Mark a file as server-only: import 'server-only', 'use server', or "seatbelt: server-only".
 
-import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync, existsSync, realpathSync } from 'node:fs';
 import { join, relative, sep, basename, extname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -265,7 +265,10 @@ export function format(result) {
   return out.join('\n');
 }
 
-const isMain = process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1]);
+// Compare real paths: through a symlink or junction (~/.claude/skills/<name>) import.meta.url is the
+// resolved target while argv[1] is the link, and a plain string compare says "not main".
+const samePath = (a, b) => { try { return realpathSync(a) === realpathSync(b); } catch { return a === b; } };
+const isMain = process.argv[1] && samePath(fileURLToPath(import.meta.url), resolve(process.argv[1]));
 if (isMain) {
   const args = process.argv.slice(2);
   const json = args.includes('--json');
